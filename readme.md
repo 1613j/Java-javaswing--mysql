@@ -22,7 +22,7 @@
 
 ## 登录成功后自动运行roombooking界面
 
-![image-20240102171949992](C:\Users\34503\Desktop\assets\image-20240102171949992.png)
+![image-20240102171949992](https://github.com/1613j/Java-javaswing--mysql/assets/126899335/2aa5edf0-5c39-4977-bd57-173e398bb125)
 
 在这个界面可以预订房间和查询取消预约，取消预约程序是cancelbook
 
