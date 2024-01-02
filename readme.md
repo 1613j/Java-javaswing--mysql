@@ -16,7 +16,7 @@
 
 ## 首先时LoginPage运行界面
 
-![image-20240102171649547](C:\Users\34503\Desktop\assets\image-20240102171649547.png)
+![image-20240102171649547](https://github.com/1613j/Java-javaswing--mysql/assets/126899335/46814f75-b114-49d8-885d-86cf6f2c2fd9)
 
 输入数据库内client表内含有的cNumber就可以登录成功，这里密码默认填充password，你也可以通过修改LoginPage下的某个方法实现自己想要的密码（我已经给你写出来了，只要把相应的地方取消注释添上注释就可以）===我可真聪明
 
