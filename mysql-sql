@@ -1,0 +1,83 @@
+create database hotelapp;
+create table rooms(
+    rNumber char(11) comment '房间编号',
+    rType varchar(20) comment '房间类型',
+    rPrice float(2) comment '房间价格',
+    lNumber char(11) comment '负责人编号',
+    lTel char(11) comment '负责人电话'
+) comment '客房表';
+create table client (
+    cNumber char(11) comment '客户编号',
+    cName varchar(20) comment '客户姓名',
+    cAge smallint comment '客户年龄',
+    cSex char(2) comment '客户性别',
+    cTel char(11) comment '客户电话'
+) comment '客户表';
+create table leader(
+    lNumber char(11) comment '负责人编号',
+    lName varchar(20) comment '负责人姓名',
+    lSex char(2) comment '负责人性别',
+    lTel char(11) comment '负责人电话'
+) comment '负责人表';
+create table checkin(
+    inNumber char(11) comment '入住编号',
+    cNumber char(11) comment '客户编号',
+    rNumber char(11) comment '房间编号',
+    checkDate date comment '入住日期'
+)comment '入住表';
+create table bookroom(
+    bookNumber char(11) comment '订房编号',
+    cNumber char(11) comment '客户编号',
+    rNumber char(11) comment '房间编号',
+    bookdate date comment '订房日期',
+    checkin char(11) comment '入住情况'
+)comment '订房表';
+create table checkout(
+    outNumber char(11) comment '退房编号',
+    cNumber char(11) comment '客户编号',
+    rNumber char(11) comment '房间编号',
+    outDate date comment '退房日期'
+)comment '退房表';
+create table changeroom(
+    changeNumber char(11) comment '换房编号',
+    cNumber char(11) comment '客户编号',
+    oldroom char(11) comment '原房间编号',
+    reason varchar(40)  comment '换房原因',
+    newroom char(11) comment '换后房间编号'
+) comment '换房表';
+create table roomstate(
+    number char(11) not null,
+    rnumber char(11),
+    state char(11) not null ,
+    count smallint
+);
+alter table roomstate
+add primary key pk(number),
+add foreign key (rnumber) references rooms(rNumber);
+alter table rooms
+add primary key pk (rNumber),
+modify lTel char(11) not null;
+alter table client
+add primary key pk (cNumber),
+add constraint check_age check (cAge>=0 and cAge<=120 ),
+modify cName varchar(20) not null ,
+modify cTel char(11) not null;
+alter table leader
+add primary key pk (lNumber),
+modify lName varchar(20) not null ,
+modify lTel char(11) not null ;
+alter table checkin
+add primary key pk(inNumber),
+modify checkDate date not null ;
+alter table bookroom
+add primary key pk(bookNumber),
+add foreign key fk1(cNumber) references client(cNumber)
+    on update no action on delete no action ,
+add foreign key fk2(rNumber) references rooms(rNumber)
+on update no action on delete no action,
+modify bookdate date not null ;
+alter table checkout
+add primary key pk(outNumber),
+modify outDate date not null ;
+alter table changeroom
+add primary key pk(changeNumber);
